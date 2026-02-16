@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>LeetMetric</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="lm-root" data-theme="dark">
+        
+        <!-- Header -->
+        <header class="lm-header">
+            <div class="lm-logo-area">
+                <div class="lm-logo">
+                    <img src="bar-graph.png" alt="LeetMetric Logo" width="48" height="48"/>
+                </div>
+                <div class="lm-logo-text">
+                    <h1>LeetMetric</h1>
+                    <p>Dashboard</p>
+                </div>
+            </div>
+            <button class="lm-theme-btn" id="lm-theme-btn" aria-label="Toggle theme" title="Toggle between dark and light mode">
+                 ☀
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="lm-main">
+            <!-- Search Section -->
+            <section class="lm-search-section">
+                <form class="lm-search-form" id="lm-search-form">
+                    <label class="lm-search-label" for="user-input">LeetCode Username</label>
+                    <div class="lm-search-row">
+                        <input 
+                            type="text" 
+                            id="user-input" 
+                            placeholder="enter_username" 
+                            aria-label="LeetCode username" 
+                            aria-required="true"
+                        >
+                        <button type="submit" class="lm-btn lm-btn-primary" id="search-btn">
+                            <span class="lm-spinner"></span>
+                            <span class="lm-btn-text">Search</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Empty State -->
+            <div id="lm-empty-state" class="lm-empty-state">
+                <img src="stats.png" alt="userLogo" width="120" height="120"/>
+                <p>Enter LeetCode username to view the stats.</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="lm-error-state" class="lm-error-state" hidden>
+                <span class="lm-error-icon">⚠️</span>
+                <p id="lm-error-msg">An error occurred. Please try again.</p>
+                <button class="lm-btn lm-btn-secondary" id="lm-retry-btn">Try Again</button>
+            </div>
+
+            <!-- Skeleton Loader -->
+            <div id="lm-skeleton" class="lm-skeleton" style="display: none;">
+                <div class="lm-skeleton-rings">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="lm-skeleton-card"></div>
+            </div>
+
+            <!-- Stats Container -->
+            <div id="stats-container" class="stats-container" hidden>
+                <!-- Progress Section -->
+                <section class="lm-progress-section">
+                    <h2 class="lm-section-title">Difficulty Progress</h2>
+                    <div class="progress">
+                        <div class="progress-item">
+                            <div class="circle easy-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Easy problems progress">
+                                <span class="circle-value" id="easy-label">0</span>
+                                <p class="circle-label">Easy</p>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="circle medium-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Medium problems progress">
+                                <span class="circle-value" id="medium-label">0</span>
+                                <p class="circle-label">Medium</p>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="circle hard-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Hard problems progress">
+                                <span class="circle-value" id="hard-label">0</span>
+                                <p class="circle-label">Hard</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Overview Section -->
+                <section class="lm-overview-section">
+                    <h2 class="lm-section-title">Overview</h2>
+                    <div class="stats-card" id="stats-card">
+                        <!-- populated by JS -->
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="lm-footer">
+            <p>@ Copyright 2026. All Rights Reserved - LeetMetric · <a href="https://leetcode-stats-api.herokuapp.com/" target="_blank">Stats API</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
